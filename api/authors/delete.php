@@ -15,13 +15,13 @@
 	$data = json_decode(file_get_contents("php://input"));
 	$authors->id = $data->id;
 	
-	if ($authors->delete()) {
+	if($authors->delete()) {
 		echo json_encode(
-			array('message' => 'Author Deleted')
+			array('id'=>$authors->id)
 		);
 	} else {
 		echo json_encode(
-			array('message' => 'Author Not Deleted')
+			array('message' => 'No Quotes Found')
 		);
 	}
 ?>

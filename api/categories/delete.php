@@ -14,14 +14,14 @@
 		
 	$data = json_decode(file_get_contents("php://input"));
 	$categories->id = $data->id;
-	
-	if ($categories->delete()) {
+
+	if($categories->delete()) {
 		echo json_encode(
-			array('message' => 'Category Deleted')
+			array('id'=>$categories->id)
 		);
 	} else {
 		echo json_encode(
-			array('message' => 'Category Not Deleted')
+			array('message' => 'No Quotes Found')
 		);
 	}
 ?>
