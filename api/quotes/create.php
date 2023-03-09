@@ -14,8 +14,8 @@
 		
 	$data = json_decode(file_get_contents("php://input"));
 	$quotes->quote = $data->quote;
-	$quotes->authorid = $data->authorid;
-	$quotes->categoryid = $data->categoryid;
+	$quotes->author_id = $data->author_id;
+	$quotes->category_id = $data->category_id;
 	
 	if ($quotes->create()) {
 		echo json_encode(

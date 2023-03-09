@@ -21,18 +21,18 @@
 		);
 	}
 	
-	if (isset($_GET['authorid'])) {
-		$quotes->id = isset($_GET['authorid']) ? $_GET['authorid'] : die();
+	if (isset($_GET['author_id'])) {
+		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes_arr = $quotes->read_single();
 	}
 	
-	if (isset($_GET['categoryid'])) {
-		$quotes->id = isset($_GET['categoryid']) ? $_GET['categoryid'] : die();
+	if (isset($_GET['category_id'])) {
+		$quotes->id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 		$quotes_arr = $quotes->read_single();
 	}
 	
-	if (isset($_GET['authorid']) && isset($_GET['categoryid'])) {
-		$quotes->id = isset($_GET['authorid']) ? $_GET['authorid'] : die();
+	if (isset($_GET['author_id']) && isset($_GET['category_id'])) {
+		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes->read_single();
 	}
 	

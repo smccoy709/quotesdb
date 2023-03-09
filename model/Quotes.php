@@ -7,8 +7,8 @@
 		public $quote;
 		public $author;
 		public $category;
-		public $authorid;
-		public $categoryid;
+		public $author_id;
+		public $category_id;
 		
 		public function __construct($db) {
 			$this->conn = $db;
@@ -77,7 +77,7 @@
 				}
 			}
 			
-			if (isset($_GET['authorid']) && isset($_GET['categoryid'])) {
+			if (isset($_GET['author_id']) && isset($_GET['category_id'])) {
 				$query = 'SELECT
 					quotes.id,
 					quotes.quote,
@@ -94,16 +94,16 @@
 				ON
 					quotes.category_id = categories.id
 				WHERE
-					quotes.author_id = :authorid
+					quotes.author_id = :author_id
 				AND
-					quotes.category_id = :categoryid
+					quotes.category_id = :category_id
 				ORDER BY quotes.id';
 			
-				$this->authorid = $_GET['authorid'];
-				$this->categoryid = $_GET['categoryid'];
+				$this->authorid = $_GET['author_id'];
+				$this->categoryid = $_GET['category_id'];
 				$stmt = $this->conn->prepare($query);
-				$stmt->bindParam(':authorid', $this->authorid);
-				$stmt->bindParam(':categoryid', $this->categoryid);
+				$stmt->bindParam(':author_id', $this->author_id);
+				$stmt->bindParam(':category_id', $this->category_id);
 				$stmt->execute();
 			
 				$quotes = [];
@@ -205,15 +205,15 @@
 			$query = 'INSERT INTO ' .
 				$this->table . '(quote, author_id, category_id)
 			VALUES(
-				 :quote, :authorid, :categoryid)';
+				 :quote, :author_id, :category_id)';
 				
 			$stmt = $this->conn->prepare($query);
 			$this->quote = htmlspecialchars(strip_tags($this->quote));
-			$this->authorid = htmlspecialchars(strip_tags($this->authorid));
-			$this->categoryid = htmlspecialchars(strip_tags($this->categoryid));
+			$this->authorid = htmlspecialchars(strip_tags($this->author_id));
+			$this->categoryid = htmlspecialchars(strip_tags($this->category_id));
 			$stmt->bindParam(':quote', $this->quote);
-			$stmt->bindParam(':authorid', $this->authorid);
-			$stmt->bindParam(':categoryid', $this->categoryid);
+			$stmt->bindParam(':author_id', $this->author_id);
+			$stmt->bindParam(':category_id', $this->category_id);
 			
 			if ($stmt->execute()) {
 				return true;
@@ -230,19 +230,19 @@
 				$this->table . '
 			SET
 				quote = :quote,
-				author_id = :authorid,
-				category_id = :categoryid
+				author_id = :author_id,
+				category_id = :category_id
 			WHERE
 				id = :id';
 				
 			$stmt = $this->conn->prepare($query);
 			$this->quote = htmlspecialchars(strip_tags($this->quote));
-			$this->authorid = htmlspecialchars(strip_tags($this->authorid));
-			$this->categoryid = htmlspecialchars(strip_tags($this->categoryid));
+			$this->author_id = htmlspecialchars(strip_tags($this->author_id));
+			$this->category_id = htmlspecialchars(strip_tags($this->category_id));
 			$this->id = htmlspecialchars(strip_tags($this->id));
 			$stmt->bindParam(':quote', $this->quote);
-			$stmt->bindParam(':authorid', $this->authorid);
-			$stmt->bindParam(':categoryid', $this->categoryid);
+			$stmt->bindParam(':author_id', $this->author_id);
+			$stmt->bindParam(':category_id', $this->category_id);
 			$stmt->bindParam(':id', $this->id);
 			
 			if ($stmt->execute()) {
@@ -279,11 +279,11 @@
 	
 	if (isset($_GET['id'])) {
 		include_once 'read_single.php';
-	} else if (isset($_GET['authorid'])) {
+	} else if (isset($_GET['author_id'])) {
 		include_once 'read_single.php';
-	} else if (isset($_GET['categoryid'])) {
+	} else if (isset($_GET['category_id'])) {
 		include_once 'read_single.php';
-	} else if (isset($_GET['authorid']) && isset($_GET['categoryid'])) {
+	} else if (isset($_GET['author_id']) && isset($_GET['category_id'])) {
 		include_once 'read_single.php';
 	} else {
 		include_once 'read.php';
