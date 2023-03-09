@@ -14,7 +14,8 @@
 		
 	$data = json_decode(file_get_contents("php://input"));
 	$authors->id = $data->id;
-	
+
+	if ($authors->id !== null) {
 	if ($authors->delete()) {
 		echo json_encode(
 			array('message' => 'Author Deleted')
@@ -24,4 +25,9 @@
 			array('message' => 'Author Not Deleted')
 		);
 	}
+} else {
+	echo json_encode(
+		array('message' => 'No Quotes Found')
+	);
+}
 ?>
