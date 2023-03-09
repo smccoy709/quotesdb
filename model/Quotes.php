@@ -99,8 +99,8 @@
 					quotes.category_id = :category_id
 				ORDER BY quotes.id';
 			
-				$this->authorid = $_GET['author_id'];
-				$this->categoryid = $_GET['category_id'];
+				$this->author_id = $_GET['author_id'];
+				$this->category_id = $_GET['category_id'];
 				$stmt = $this->conn->prepare($query);
 				$stmt->bindParam(':author_id', $this->author_id);
 				$stmt->bindParam(':category_id', $this->category_id);
@@ -120,7 +120,7 @@
 				}
 				
 				return $quotes;
-			} else if (isset($_GET['authorid'])) {
+			} else if (isset($_GET['author_id'])) {
 				$query = 'SELECT
 					quotes.id,
 					quotes.quote,
@@ -209,8 +209,8 @@
 				
 			$stmt = $this->conn->prepare($query);
 			$this->quote = htmlspecialchars(strip_tags($this->quote));
-			$this->authorid = htmlspecialchars(strip_tags($this->author_id));
-			$this->categoryid = htmlspecialchars(strip_tags($this->category_id));
+			$this->author_id = htmlspecialchars(strip_tags($this->author_id));
+			$this->category_id = htmlspecialchars(strip_tags($this->category_id));
 			$stmt->bindParam(':quote', $this->quote);
 			$stmt->bindParam(':author_id', $this->author_id);
 			$stmt->bindParam(':category_id', $this->category_id);
