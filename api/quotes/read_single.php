@@ -27,12 +27,12 @@
 	}
 	
 	if (isset($_GET['category_id'])) {
-		$quotes->id = isset($_GET['id']) ? $_GET['id'] : die();
+		$quotes->id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 		$quotes_arr = $quotes->read_single();
 	}
 	
 	if (isset($_GET['author_id']) && isset($_GET['category_id'])) {
-		$quotes->id = isset($_GET['id']) ? $_GET['id'] : die();
+		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes->read_single();
 	}
 	
