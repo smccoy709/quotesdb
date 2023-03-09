@@ -32,7 +32,7 @@
 	}
 	
 	if (isset($_GET['author_id']) !== null) {
-		$quotes->author_id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
+		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes_arr = $quotes->read_single();
 		echo json_encode($quotes_arr);
 	}
@@ -43,8 +43,7 @@
 	}
 	
 	if (isset($_GET['author_id']) && isset($_GET['category_id'])) {
-		$quotes->author id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
-		$quotes->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
+		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes->read_single();
 	}
 ?>
