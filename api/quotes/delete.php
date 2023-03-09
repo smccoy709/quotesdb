@@ -17,7 +17,7 @@
 
 	if($quotes->delete()) {
 		echo json_encode(
-			array("id"=>$quotes->id)
+			array('id'=>$quotes->id)
 		);
 	} else {
 		echo json_encode(
