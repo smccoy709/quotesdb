@@ -64,6 +64,11 @@
 				LIMIT 1';
 			
 				$stmt = $this->conn->prepare($query);
+
+                $quote->id = isset($_GET['id']) ? $_GET['id'] : die();
+                $quote->author_id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
+                $quote->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
+                
 				$stmt->bindParam(':id', $this->id);
 				$stmt->execute();
 				
