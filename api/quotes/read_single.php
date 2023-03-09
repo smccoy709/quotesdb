@@ -1,4 +1,5 @@
 <?php
+	header('Access-Control-Allow-Origin: *');
 	header('Content-Type: application/json');
 	
 	include_once '../../config/database.php';
@@ -20,6 +21,18 @@
 			'category' => $quotes->category
 		);
 	}
+
+	if($quotes->id !== null){
+		//Change to JSON data
+		print_r(json_encode($quotes_arr, JSON_NUMERIC_CHECK));
+		}
+	
+	else
+		{
+			echo json_encode(
+				array('message' => 'No Quotes Found')
+			);
+		}
 	
 	if (isset($_GET['author_id'])) {
 		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
