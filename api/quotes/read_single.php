@@ -22,7 +22,7 @@
 	}
 	
 	if (isset($_GET['author_id'])) {
-		$quotes->id = isset($_GET['id']) ? $_GET['id'] : die();
+		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes_arr = $quotes->read_single();
 	}
 	
