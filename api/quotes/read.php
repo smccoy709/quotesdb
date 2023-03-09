@@ -3,7 +3,7 @@
 	header('Content-Type: application/json');
 
 	include_once '../../config/database.php';
-	include_once '../../model/Quotes.php';
+	require('../../model/Quotes.php');
 
 	$database = new Database();
 	$db = $database->connect();
