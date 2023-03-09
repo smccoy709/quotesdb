@@ -27,7 +27,7 @@
 			INNER JOIN
 				authors
 			ON
-				quotes.author_id = authors.id
+				quotes.authorid = authors.id
 			INNER JOIN
 				categories
 			ON
