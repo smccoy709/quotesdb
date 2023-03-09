@@ -43,5 +43,4 @@
 		$quotes->read_single();
 	}
 	
-	echo json_encode($quotes_arr);
 ?>
