@@ -9,6 +9,7 @@
 	
 	$quotes = new Quotes($db);
 	
+	if ($quotes->quote != null) {
 	if (isset($_GET['id'])) {
 		$quotes->id = isset($_GET['id']) ? $_GET['id'] : die();
 		$quotes->read_single();
@@ -25,6 +26,7 @@
 			array('message' => 'quote_id Not Found')
 		);
 	}
+}
 	
 	if (isset($_GET['author_id'])) {
 		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
