@@ -1,7 +1,4 @@
-<?php
-    require('../../config/database.php');
-    require('../../model/Author.php');
-    
+<?php    
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     $method = $_SERVER['REQUEST_METHOD'];
