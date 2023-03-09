@@ -33,7 +33,7 @@
 	
 	if (isset($_GET['author_id'])) {
 		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
-		$quotes_arr = $quotes->read_single();
+		$quotes->read_single();
 
 		$quotes_arr = array(
 			'id' => $quotes->id,
