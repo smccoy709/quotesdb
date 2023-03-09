@@ -14,14 +14,14 @@
 		
 	$data = json_decode(file_get_contents("php://input"));
 	$authors->author = $data->author;
-	
-	if ($authors->create()) {
+
+	if($authors->create()) {
 		echo json_encode(
-			array('message' => 'Author Created')
+			array('id'=>$authors->id, 'author'=>$authors->author)
 		);
 	} else {
 		echo json_encode(
-			array('message' => 'Author Not Created')
+			array('message' => 'No Authors Found')
 		);
 	}
 ?>
