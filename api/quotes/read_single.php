@@ -36,7 +36,7 @@
 		$quotes_arr = $quotes->read_single();
 		echo json_encode($quotes_arr);
 	}
-	else {
+	else if ($quotes->author === null) {
 		echo json_encode(
 			array('message' => 'No Authors Found')
 		);
