@@ -1,138 +1,38 @@
-<?php
-	header('Access-Control-Allow-Origin: *');
-	header('Content-Type: application/json');
-	$method = $_SERVER['REQUEST_METHOD'];
+<?php    
+    header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json');
+    $method = $_SERVER['REQUEST_METHOD'];
 
-	if ($method === 'OPTIONS') {
-		header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-		header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
-		exit();
-	}
-	
-	include_once '../config/database.php';
-	
-	class Categories{
-		private $conn;
-		private $table = 'categories';
-		
-		public $id;
-		public $category;
-		
-		public function __construct($db) {
-			$this->conn = $db;
-		}
-		
-		// Read all categories
-		
-		public function display_categories() {
-			$query = 'SELECT
-				id,
-				category
-			FROM
-				' . $this->table . '
-			ORDER BY
-				id';
-				
-			$stmt = $this->conn->prepare($query);
-			$stmt->execute();
-			return $stmt;
-		}
-		
-		// Read single category
-		
-		public function read_single() {
-			$query = 'SELECT
-				id,
-				category
-			FROM
-				' . $this->table . '
-			WHERE
-				id = :id
-			LIMIT 1';
-			
-			$stmt = $this->conn->prepare($query);
-			$stmt->bindParam(':id', $this->id);
-			$stmt->execute();
-			
-			$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			
-			if (is_array($row)) {
-				$this->id = $row['id'];
-				$this->category = $row['category'];
-			}
-		}
-		
-		// Create category
-		
-		public function create() {
-			$query = 'INSERT INTO ' .
-				$this->table . '(category)
-			VALUES(
-				 :category)';
-				
-			$stmt = $this->conn->prepare($query);
-			$this->category = htmlspecialchars(strip_tags($this->category));
-			$stmt->bindParam(':category', $this->category);
-			
-			if ($stmt->execute()) {
-				return true;
-			}
-			
-			printf("Error: %s.\n", $stmt->error);
-			return false;
-		}
-		
-		// Update category
-		
-		public function update() {
-			$query = 'UPDATE ' .
-				$this->table . '
-			SET
-				category = :category
-			WHERE
-				id = :id';
-				
-			$stmt = $this->conn->prepare($query);
-			$this->category = htmlspecialchars(strip_tags($this->category));
-			$this->id = htmlspecialchars(strip_tags($this->id));
-			$stmt->bindParam(':category', $this->category);
-			$stmt->bindParam(':id', $this->id);
-			
-			if ($stmt->execute()) {
-				return true;
-			}
-			
-			printf("Error: %s.\n", $stmt->error);
-			return false;
-			
-			echo $query;
-		}
-		
-		// Delete category
-		
-		public function delete() {
-			$query = 'DELETE FROM ' .
-				$this->table .
-			' WHERE id = :id';
-			
-			$stmt = $this->conn->prepare($query);
-			
-			$this->id = htmlspecialchars(strip_tags($this->id));
-			
-			$stmt->bindParam(':id', $this->id);
-			
-			if ($stmt->execute()) {
-				return true;
-			}
-			
-			printf("Error: %s.\n", $stmt->error);
-			return false;
-		}
-	}
-	
-	if (isset($_GET['id'])) {
-		include_once 'read_single.php';
-	} else {
-		include_once 'read.php';
-	}
+    //Getting URL that is being passed
+    $uri = $_SERVER['REQUEST_URI'];
+
+    //$idPassed = parse_url($uri, PHP_URL_QUERY);
+
+    if ($method === 'OPTIONS') {
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
+        exit();
+    }
+
+
+    if ($method === 'GET') {
+        //checking URL if it has a query statement like id=1
+        if (parse_url($uri, PHP_URL_QUERY)){
+            require('read_single.php');
+        } else {
+            require('read.php');
+        }
+    }
+
+    else if ($method === 'POST') {
+        require('create.php');
+    }
+
+    else if ($method === 'PUT') {
+        require('update.php');
+    }
+
+    else if ($method === 'DELETE') {
+        require('delete.php');
+    }
 ?>
