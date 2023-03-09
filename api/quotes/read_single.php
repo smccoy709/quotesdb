@@ -9,7 +9,7 @@
 	
 	$quotes = new Quotes($db);
 	
-	if (isset($_GET['id']) != null) {
+	if (isset($_GET['id'])) {
 		$quotes->id = isset($_GET['id']) ? $_GET['id'] : die();
 		$quotes->read_single();
 	
@@ -18,11 +18,6 @@
 			'quote' => $quotes->quote,
 			'author' => $quotes->author,
 			'category' => $quotes->category
-		);
-		echo json_encode($quotes_arr);
-	} else {
-		echo json_encode(
-			array('message' => 'quote_id Not Found')
 		);
 	}
 	
