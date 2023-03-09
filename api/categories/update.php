@@ -16,15 +16,13 @@
 	$categories->id = $data->id;
 	$categories->category = $data->category;
 	
-	var_dump($data);
-	
-	if ($categories->update()) {
+	if($categories->update()) {
 		echo json_encode(
-			array('message' => 'Category Updated')
+			array('id'=>$categories->id, 'category'=>$categories->category)
 		);
 	} else {
 		echo json_encode(
-			array('message' => 'Category Not Updated')
+			array('message' => 'No Category Found')
 		);
 	}
 ?>

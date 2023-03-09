@@ -16,13 +16,13 @@
 	$authors->id = $data->id;
 	$authors->author = $data->author;
 	
-	if ($authors->update()) {
+	if($authors->update()) {
 		echo json_encode(
-			array('message' => 'Author Updated')
+			array('id'=>$authors->id, 'author'=>$authors->author)
 		);
 	} else {
 		echo json_encode(
-			array('message' => 'Author Not Updated')
+			array('message' => 'No Authors Found')
 		);
 	}
 ?>

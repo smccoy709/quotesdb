@@ -17,13 +17,13 @@
 	$quotes->author_id = $data->author_id;
 	$quotes->category_id = $data->category_id;
 	
-	if ($quotes->create()) {
+	if($quotes->create()) {
 		echo json_encode(
-			array('message' => 'Quote Created')
+			array('id'=>$quotes->id, 'quote'=>$quotes->quote, 'author_id'=>$quotes->author_id, 'category_id'=>$quotes->category_id)
 		);
 	} else {
 		echo json_encode(
-			array('message' => 'Quote Not Created')
+			array('message' => 'No Quotes Found')
 		);
 	}
 ?>
