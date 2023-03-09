@@ -20,36 +20,21 @@
 			'author' => $quotes->author,
 			'category' => $quotes->category
 		);
-	}
 
-	if($quotes->quote !== null){
-		//Change to JSON data
-		print_r(json_encode($quotes_arr, JSON_NUMERIC_CHECK));
-		}
-	
-	else
-		{
+		if($quotes->quote !== null) {
+			//Change to JSON data
+			print_r(json_encode($quotes_arr, JSON_NUMERIC_CHECK));
+		} else {
 			echo json_encode(
 				array('message' => 'No Quotes Found')
 			);
 		}
+	}
 	
 	if (isset($_GET['author_id'])) {
 		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes_arr = $quotes->read_single();
 	}
-
-	if($quotes->author !== null){
-		//Change to JSON data
-		print_r(json_encode($quotes_arr, JSON_NUMERIC_CHECK));
-		}
-		
-		else
-			{
-				echo json_encode(
-					array('message' => 'No Authors Found')
-				);
-			}
 	
 	if (isset($_GET['category_id'])) {
 		$quotes->id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
