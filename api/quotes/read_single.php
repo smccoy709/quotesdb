@@ -35,6 +35,11 @@
 		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes_arr = $quotes->read_single();
 
+		$quotes_arr = array(
+			'id' => $quotes->id,
+			'author' => $quotes->author
+		);
+
 		if($quotes->author !== null) {
 			//Change to JSON data
 			print_r(json_encode($quotes_arr, JSON_NUMERIC_CHECK));
