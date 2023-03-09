@@ -19,6 +19,11 @@
 			'author' => $quotes->author,
 			'category' => $quotes->category
 		);
+		echo json_encode($quotes_arr);
+	} else {
+		echo json_encode(
+			array('message' => 'quote_id Not Found')
+		);
 	}
 	
 	if (isset($_GET['author_id'])) {
