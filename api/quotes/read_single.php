@@ -36,6 +36,11 @@
 		$quotes_arr = $quotes->read_single();
 		echo json_encode($quotes_arr);
 	}
+	else {
+		echo json_encode(
+			array('message' => 'No Authors Found')
+		);
+	}
 	
 	if (isset($_GET['category_id'])) {
 		$quotes->id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
