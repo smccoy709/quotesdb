@@ -22,7 +22,7 @@
 		);
 	}
 
-	if($quotes->id !== null){
+	if($quotes->quote !== null){
 		//Change to JSON data
 		print_r(json_encode($quotes_arr, JSON_NUMERIC_CHECK));
 		}
