@@ -15,13 +15,19 @@
 	$data = json_decode(file_get_contents("php://input"));
 	$quotes->id = $data->id;
 	
-	if ($quotes->delete()) {
+	if ($quotes->id !== null) {
+		if ($quotes->delete()) {
 		echo json_encode(
 			array('message' => 'Quote Deleted')
 		);
 	} else {
 		echo json_encode(
 			array('message' => 'Quote Not Deleted')
+		);
+	}
+} else {
+		echo json_encode(
+			array('message' => 'Quote Not Found')
 		);
 	}
 ?>
