@@ -32,23 +32,19 @@
 	}
 	
 	if (isset($_GET['author_id']) !== null) {
-		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
+		$quotes->author_id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes_arr = $quotes->read_single();
 		echo json_encode($quotes_arr);
 	}
-	else {
-		echo json_encode(
-			array('message' => 'No Authors Found')
-		);
-	}
 	
 	if (isset($_GET['category_id'])) {
-		$quotes->id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
+		$quotes->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 		$quotes_arr = $quotes->read_single();
 	}
 	
 	if (isset($_GET['author_id']) && isset($_GET['category_id'])) {
-		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
+		$quotes->author id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
+		$quotes->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 		$quotes->read_single();
 	}
 ?>
