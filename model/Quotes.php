@@ -276,16 +276,4 @@
 			return false;
 		}
 	}
-	
-	if (isset($_GET['id'])) {
-		include_once '../quotes/read_single.php';
-	} else if (isset($_GET['author_id'])) {
-		include_once '../quotes/read_single.php';
-	} else if (isset($_GET['category_id'])) {
-		include_once '../quotes/read_single.php';
-	} else if (isset($_GET['author_id']) && isset($_GET['category_id'])) {
-		include_once '../quotes/read_single.php';
-	} else {
-		include_once '../quotes/read.php';
-	}
 ?>
