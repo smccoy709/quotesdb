@@ -23,7 +23,7 @@
 		);
 	} else {
 		echo json_encode(
-			array('message' => 'Missing Required Parameters')
+			array('message' => 'Quote Not Created')
 		);
 	}
 ?>

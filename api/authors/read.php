@@ -1,10 +1,10 @@
 <?php	
+	header('Access-Control-Allow-Origin: *');
+	header('Content-Type: application/json');
+	
 	include_once '../../config/database.php';
 	include_once '../../model/Author.php';
 	
-	header('Access-Control-Allow-Origin: *');
-	header('Content-Type: application/json');
-
 	$database = new Database();
 	$db = $database->connect();
 	
