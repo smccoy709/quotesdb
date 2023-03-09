@@ -271,10 +271,9 @@
 			if ($stmt->execute()) {
 				return true;
 			}
-			else {
-			printf('No Quotes Found');
+			
+			printf("Error: %s.\n", $stmt->error);
 			return false;
-			}
 		}
 	}
 ?>
