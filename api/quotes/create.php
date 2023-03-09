@@ -21,6 +21,10 @@
 		echo json_encode(
 			array('message' => 'Quote Created')
 		);
+	} else if ($quotes->category_id === null) {
+		echo json_encode(
+			array('message' => 'category_id Not Found')
+		);
 	} else {
 		echo json_encode(
 			array('message' => 'Quote Not Created')
