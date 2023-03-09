@@ -35,11 +35,11 @@
 			FROM
 				' . $this->table . '
 			WHERE
-				id = :id
+				id = :category_id
 			LIMIT 1';
 			
 			$stmt = $this->conn->prepare($query);
-			$stmt->bindParam(':id', $this->id);
+			$stmt->bindParam(':category_id', $this->category_id);
 			$stmt->execute();
 			
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);

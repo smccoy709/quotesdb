@@ -27,7 +27,7 @@
 	}
 	
 	if (isset($_GET['category_id'])) {
-		$quotes->id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
+		$quotes->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 		$quotes_arr = $quotes->read_single();
 	}
 	
