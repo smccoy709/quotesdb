@@ -4,8 +4,8 @@
 	header('Access-Control-Allow-Methods: DELETE');
 	header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 	
-	include_once '../config/database.php';
-	include_once 'index.php';
+	include_once '../../config/database.php';
+	include_once '../../model/Quotes.php';
 
 	$database = new Database();
 	$db = $database->connect();
