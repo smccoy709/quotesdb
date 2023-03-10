@@ -171,15 +171,19 @@
 				FROM
 					' . $this->table . '
 				INNER JOIN
+					authors
+				ON
+					quotes.author_id = authors.id
+				INNER JOIN
 					categories
 				ON
 					quotes.category_id = categories.id
 				WHERE
-					quotes.category_id = :category_id
+					quotes.category_id = :id
 				ORDER BY quotes.id';
 			
 				$stmt = $this->conn->prepare($query);
-				$stmt->bindParam(':category_id', $this->category_id);
+				$stmt->bindParam(':id', $this->id);
 				$stmt->execute();
 			
 				$quotes = [];
@@ -202,10 +206,12 @@
 		// Create author
 		
 		public function create() {
-			$query = 'INSERT INTO ' .
-				$this->table . '(quote, author_id, category_id)
-			VALUES(
-				 :quote, :author_id, :category_id)';
+			if ($quotes->author_id !== null) {
+				$query = 'INSERT INTO ' .
+				$this->table . 
+					'(quote, author_id, category_id)
+				VALUES(
+					:quote, :author_id, :category_id)';
 				
 			$stmt = $this->conn->prepare($query);
 			$this->quote = htmlspecialchars(strip_tags($this->quote));
@@ -221,6 +227,10 @@
 			
 			printf("Error: %s.\n", $stmt->error);
 			return false;
+		} else {
+			echo json_encode(
+				array('message' => 'author_id Not Found')
+			);
 		}
 		
 		// Update author
