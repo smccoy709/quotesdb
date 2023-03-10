@@ -201,7 +201,6 @@
 				
 				return $quotes;
 			}
-		}
 		
 		// Create author
 		
@@ -259,6 +258,7 @@
 			
 			echo $query;
 		}
+	}
 		
 		// Delete author
 		
