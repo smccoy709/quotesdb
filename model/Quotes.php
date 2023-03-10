@@ -120,7 +120,9 @@
 				}
 				
 				return $quotes;
-			} else if (isset($_GET['author_id'])) {
+			}
+			
+			if (isset($_GET['author_id'])) {
 				$query = 'SELECT
 					quotes.id,
 					quotes.quote,
@@ -158,7 +160,9 @@
 				}
 				
 				return $quotes;
-			} else {
+			}
+			
+			if (isset($_GET['category_id'])) {
 				$query = 'SELECT
 					quotes.id,
 					quotes.quote,
@@ -226,7 +230,8 @@
 		// Update author
 		
 		public function update() {
-			$query = 'UPDATE ' .
+			if ($author_id !== null) {
+				$query = 'UPDATE ' .
 				$this->table . '
 			SET
 				quote = :quote,
