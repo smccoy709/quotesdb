@@ -120,9 +120,7 @@
 				}
 				
 				return $quotes;
-			}
-			
-			if (isset($_GET['author_id'])) {
+			} else if (isset($_GET['author_id'])) {
 				$query = 'SELECT
 					quotes.id,
 					quotes.quote,
@@ -160,9 +158,7 @@
 				}
 				
 				return $quotes;
-			}
-			
-			if (isset($_GET['category_id'])) {
+			} else {
 				$query = 'SELECT
 					quotes.id,
 					quotes.quote,
@@ -225,19 +221,6 @@
 			
 			printf("Error: %s.\n", $stmt->error);
 			return false;
-
-			if ($categories->category != null) {
-				$category_arr = array(
-					'id' => $categories->id,
-					'category' => $categories->category
-				);
-					
-				echo json_encode($category_arr);
-			} else {
-				echo json_encode(
-					array('message' => 'category_id Not Found')
-				);
-			}
 		}
 		
 		// Update author
