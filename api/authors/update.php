@@ -13,16 +13,19 @@
 	$authors = new Authors($db);
 		
 	$data = json_decode(file_get_contents("php://input"));
+
+	if (!isset($data->author)) {
+		echo json_encode(
+			array('message' = 'Missing Required Parameters');
+		);
+	}
+
 	$authors->id = $data->id;
 	$authors->author = $data->author;
 	
 	if($authors->update()) {
 		echo json_encode(
 			array('id'=>$authors->id, 'author'=>$authors->author)
-		);
-	} else if (!isset($authors->update())) {
-		echo json_encode(
-			array('message' = 'Missing Required Parameters');
 		);
 	} else {
 		echo json_encode(
