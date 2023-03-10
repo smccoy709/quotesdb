@@ -158,7 +158,7 @@
 				}
 				
 				return $quotes;
-			} else {
+			} else if (isset($_GET['category_id'])) {
 				$query = 'SELECT
 					quotes.id,
 					quotes.quote,
