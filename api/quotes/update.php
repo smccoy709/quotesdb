@@ -28,9 +28,9 @@
 	
 	if($quotes->update()) {
 		echo json_encode(
-			array("id"=>$quotes->id,'quote'=>$quotes->quote,'author_id'=>$quotes->author_id,'category_id'=>$quotes->category_id)
+			array('id'=>$quotes->id, 'quote'=>$quotes->quote, 'author_id'=>$quotes->author_id, 'category_id'=>$quotes->category_id)
 		);
-	} else {
+	} else if (empty($quotes->quote)) {
 		echo json_encode(
 			array('message' => 'No Quotes Found')
 		);
