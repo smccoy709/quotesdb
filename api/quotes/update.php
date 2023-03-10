@@ -28,7 +28,7 @@
 		);
 	}
 
-	if(!isset($quotes->id) or !isset($quotes->quote) or !isset($quotes->author_id) or !isset($quotes->category_id)) {
+	if(!isset($data->id) or !isset($data->quote) or !isset($data->author_id) or !isset($data->category_id)) {
 		echo json_encode(
 			array('message' => 'Missing Required Parameters')
 		);
