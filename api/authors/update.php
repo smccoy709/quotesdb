@@ -25,4 +25,10 @@
 			array('message' => 'No Authors Found')
 		);
 	}
+
+	if (!isset($author)) {
+		echo json_encode(
+			array('message' => 'Missing Required Parameters');
+		);
+	}
 ?>
