@@ -209,7 +209,7 @@
 			$query = 'INSERT INTO ' .
 				$this->table . '(quote, author_id, category_id)
 			VALUES(
-				 :id, :quote, :author_id, :category_id)';
+				 :quote, :author_id, :category_id)';
 				
 			$stmt = $this->conn->prepare($query);
 			$this->quote = htmlspecialchars(strip_tags($this->quote));
@@ -225,13 +225,25 @@
 			
 			printf("Error: %s.\n", $stmt->error);
 			return false;
+
+			if ($categories->category != null) {
+				$category_arr = array(
+					'id' => $categories->id,
+					'category' => $categories->category
+				);
+					
+				echo json_encode($category_arr);
+			} else {
+				echo json_encode(
+					array('message' => 'category_id Not Found')
+				);
+			}
 		}
 		
 		// Update author
 		
 		public function update() {
-			if ($author_id !== null) {
-				$query = 'UPDATE ' .
+			$query = 'UPDATE ' .
 				$this->table . '
 			SET
 				quote = :quote,
@@ -253,13 +265,12 @@
 			if ($stmt->execute()) {
 				return true;
 			}
-
+			
 			printf("Error: %s.\n", $stmt->error);
 			return false;
 			
 			echo $query;
 		}
-	}
 		
 		// Delete author
 		
