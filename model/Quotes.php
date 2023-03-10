@@ -206,12 +206,10 @@
 		// Create author
 		
 		public function create() {
-			if ($quotes->author_id !== null) {
-				$query = 'INSERT INTO ' .
-				$this->table . 
-					'(quote, author_id, category_id)
-				VALUES(
-					:quote, :author_id, :category_id)';
+			$query = 'INSERT INTO ' .
+				$this->table . '(quote, author_id, category_id)
+			VALUES(
+				 :quote, :author_id, :category_id)';
 				
 			$stmt = $this->conn->prepare($query);
 			$this->quote = htmlspecialchars(strip_tags($this->quote));
@@ -227,17 +225,13 @@
 			
 			printf("Error: %s.\n", $stmt->error);
 			return false;
-		} else {
-			echo json_encode(
-				array('message' => 'author_id Not Found')
-			);
 		}
-	}
 		
 		// Update author
 		
 		public function update() {
-			$query = 'UPDATE ' .
+			if ($author_id !== null) {
+				$query = 'UPDATE ' .
 				$this->table . '
 			SET
 				quote = :quote,
@@ -264,6 +258,12 @@
 			return false;
 			
 			echo $query;
+		} else {
+			echo json_encode(
+				array('message' => 'author_id Not Found')
+			);
+			exit();
+		}
 		}
 		
 		// Delete author
