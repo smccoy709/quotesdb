@@ -212,11 +212,9 @@
 				 :id, :quote, :author_id, :category_id)';
 				
 			$stmt = $this->conn->prepare($query);
-			$this->id = htmlspecialchars(strip_tags($this->id));
 			$this->quote = htmlspecialchars(strip_tags($this->quote));
 			$this->author_id = htmlspecialchars(strip_tags($this->author_id));
 			$this->category_id = htmlspecialchars(strip_tags($this->category_id));
-			$stmt->bindParam(':id', $this->id);
 			$stmt->bindParam(':quote', $this->quote);
 			$stmt->bindParam(':author_id', $this->author_id);
 			$stmt->bindParam(':category_id', $this->category_id);
@@ -254,10 +252,11 @@
 			
 			if ($stmt->execute()) {
 				return true;
-			} else {
+			}
+
 			printf("Error: %s.\n", $stmt->error);
 			return false;
-			}
+			
 			echo $query;
 		}
 	}
