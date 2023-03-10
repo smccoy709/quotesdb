@@ -36,7 +36,7 @@
 		$quotes_arr = $quotes->read_single();
 	}
 	
-	if (isset($_GET['category_id']) != null) {
+	if (isset($_GET['category_id']) !== null) {
 		$quotes->id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 		$quotes_arr = $quotes->read_single();
 	}
