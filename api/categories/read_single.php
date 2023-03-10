@@ -9,7 +9,7 @@
 	
 	$categories = new Categories($db);
 	
-	$categories->category_id = isset($_GET['id']) ? $_GET['id'] : die();
+	$categories->id = isset($_GET['id']) ? $_GET['id'] : die();
 	
 	$categories->read_single();
 	
