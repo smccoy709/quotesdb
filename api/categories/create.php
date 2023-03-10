@@ -13,6 +13,14 @@
 	$categories = new Categories($db);
 		
 	$data = json_decode(file_get_contents("php://input"));
+
+	if(!isset($data->category)) {
+		echo json_encode(
+			array('message' => 'Missing Required Parameters')
+		);
+		exit();
+	}
+	
 	$categories->category = $data->category;
 	
 	if($categories->create()) {

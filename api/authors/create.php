@@ -13,6 +13,14 @@
 	$authors = new Authors($db);
 		
 	$data = json_decode(file_get_contents("php://input"));
+
+	if(!isset($data->author)) {
+		echo json_encode(
+			array('message' => 'Missing Required Parameters')
+		);
+		exit();
+	}
+	
 	$authors->author = $data->author;
 
 	if($authors->create()) {

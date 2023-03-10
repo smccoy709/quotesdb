@@ -20,7 +20,8 @@
 		);
 		exit();
 	}
-	
+
+	$quotes->id = $data->id;
 	$quotes->quote = $data->quote;
 	$quotes->author_id = $data->author_id;
 	$quotes->category_id = $data->category_id;
