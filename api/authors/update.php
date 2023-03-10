@@ -15,6 +15,13 @@
 	$data = json_decode(file_get_contents("php://input"));
 	$authors->id = $data->id;
 	$authors->author = $data->author;
+
+	if (!isset($data->author)) {
+		echo json_encode(
+			array('message' => 'Missing Required Parameters');
+		);
+		exit();
+	}
 	
 	if($authors->update()) {
 		echo json_encode(
@@ -23,12 +30,6 @@
 	} else {
 		echo json_encode(
 			array('message' => 'No Authors Found')
-		);
-	}
-
-	if (!isset($author)) {
-		echo json_encode(
-			array('message' => 'Missing Required Parameters');
 		);
 	}
 ?>
