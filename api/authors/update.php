@@ -24,7 +24,7 @@
 		echo json_encode(
 			array('message' = 'Missing Required Parameters');
 		);
-	}else {
+	} else {
 		echo json_encode(
 			array('message' => 'No Authors Found')
 		);
