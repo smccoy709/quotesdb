@@ -232,6 +232,7 @@
 				array('message' => 'author_id Not Found')
 			);
 		}
+	}
 		
 		// Update author
 		
