@@ -225,13 +225,25 @@
 			
 			printf("Error: %s.\n", $stmt->error);
 			return false;
+
+			if ($categories->category != null) {
+				$category_arr = array(
+					'id' => $categories->id,
+					'category' => $categories->category
+				);
+					
+				echo json_encode($category_arr);
+			} else {
+				echo json_encode(
+					array('message' => 'category_id Not Found')
+				);
+			}
 		}
 		
 		// Update author
 		
 		public function update() {
-			if ($author_id !== null) {
-				$query = 'UPDATE ' .
+			$query = 'UPDATE ' .
 				$this->table . '
 			SET
 				quote = :quote,
@@ -258,12 +270,6 @@
 			return false;
 			
 			echo $query;
-		} else {
-			echo json_encode(
-				array('message' => 'author_id Not Found')
-			);
-			exit();
-		}
 		}
 		
 		// Delete author
