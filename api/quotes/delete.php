@@ -14,7 +14,7 @@
 		
 	$data = json_decode(file_get_contents("php://input"));
 
-	if(empty($data->id) || empty($data->quote) || empty($data->author_id) || !empty($data->category_id)) {
+	if(empty($data->id)) {
 		echo json_encode(
 			array('message' => 'No Quotes Found')
 		);
