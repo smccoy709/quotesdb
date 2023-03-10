@@ -179,11 +179,11 @@
 				ON
 					quotes.category_id = categories.id
 				WHERE
-					quotes.category_id = :id
+					quotes.category_id = :category_id
 				ORDER BY quotes.id';
 			
 				$stmt = $this->conn->prepare($query);
-				$stmt->bindParam(':id', $this->id);
+				$stmt->bindParam(':category_id', $this->category_id);
 				$stmt->execute();
 			
 				$quotes = [];
