@@ -171,10 +171,6 @@
 				FROM
 					' . $this->table . '
 				INNER JOIN
-					authors
-				ON
-					quotes.author_id = authors.id
-				INNER JOIN
 					categories
 				ON
 					quotes.category_id = categories.id
