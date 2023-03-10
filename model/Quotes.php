@@ -201,6 +201,7 @@
 				
 				return $quotes;
 			}
+		}
 		
 		// Create author
 		
@@ -280,4 +281,5 @@
 			printf("Error: %s.\n", $stmt->error);
 			return false;
 		}
+	}
 ?>
