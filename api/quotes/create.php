@@ -27,7 +27,7 @@
 	
 	if($quotes->create()) {
 		echo json_encode(
-			array('id'=>$quotes->id,'quote'=>$quotes->quote,'author_id'=>$quotes->author_id,'category_id'=>$quotes->category_id)
+			array('quote'=>$quotes->quote, 'author_id'=>$quotes->author_id, 'category_id'=>$quotes->category_id)
 		);
 	} else {
 		echo json_encode(
