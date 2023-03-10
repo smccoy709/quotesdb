@@ -14,13 +14,6 @@
 		
 	$data = json_decode(file_get_contents("php://input"));
 
-	if(empty($data->id)) {
-		echo json_encode(
-			array('message' => 'No Quotes Found')
-		);
-		exit();
-	}
-
 	$quotes->id = $data->id;
 
 	if($quotes->delete()) {

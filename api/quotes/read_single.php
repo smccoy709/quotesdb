@@ -34,6 +34,7 @@
 	if (isset($_GET['author_id']) !== null) {
 		$quotes->id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 		$quotes_arr = $quotes->read_single();
+		echo json_encode($quotes_arr);
 	}
 	
 	if (isset($_GET['category_id'])) {
