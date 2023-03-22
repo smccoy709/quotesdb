@@ -1,2 +1,2 @@
 # Scott McCoy
-# https://quotesdb.smccoyauthor.repl.co/api
+# https://replit.com/@smccoyauthor/quotesdb
